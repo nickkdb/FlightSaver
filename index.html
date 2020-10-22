@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flight Saver</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
+
 <body>
-    
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Flight Saver</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="" class="saved waves-effect waves-light btn-large">Saved Flights</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+
+        <form class="container">
+            <div class="row">
+                <div class="left">
+                    <h3>Where are you going?</h3>
+                    <div class="row">
+                        <div class="col s12">
+                            <input id="where" type="text" placeholder="Country/City/Airport"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4 left">
+                    <h3>When are you going?</h3>
+                    <div class="row">
+                        <div class="col s6">
+                            <input id="from" type="text" class="datepicker" placeholder="From"></input></div>
+                        <div class="col s6">
+                            <input id="to" type="text" class="datepicker" placeholder="To"></input></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </header>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
 </body>
+
 </html>

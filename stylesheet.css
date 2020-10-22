@@ -1,0 +1,16 @@
+header {
+    background-image: url("images/ocean.jpg");
+    background-position: center;
+    padding: 300px 0px 300px 0px;
+}
+h3 {
+    color: #fff;
+    font-family: 'Krona One', sans-serif;
+}
+.saved {
+    float: right;
+}
+.left {
+    float: left;
+    max-width: 500px;
+}
