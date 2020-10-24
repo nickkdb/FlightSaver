@@ -9,6 +9,9 @@ header {
     background-size: cover;
     padding: 300px 0px 300px 0px;
 }
+button, input, optgroup, select, textarea {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
 h2, h3 {
     color: #fff;
     font-family:'Playfair Display SC', serif;
@@ -17,7 +20,6 @@ nav .nav-wrapper {
     position: relative;
     height: 100%;
     background-color: #345291;
-    font-family:'Playfair Display SC', serif;
 }
 .container {
     margin: 0 auto;
@@ -34,16 +36,17 @@ nav .nav-wrapper {
     max-width: 500px;
     margin: 20px;
 }
+
 .card .card-image img {
     object-fit: cover;
-    vertical-align: middle; 
     margin: auto;
     max-height: 200px;
     max-width: 100%;
 }
-#money img{
-    vertical-align: top; 
-}
 .weather {
     color: #000;
+}
+select {
+    display: block;
+    height: 3.7rem;
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xchg</title>   
+            
+</head>
+<body>
+    <input>
+    <select id="fromCurrency"></select>
+    <select id="toCurrency"></select>
+    <button id="getCurrency">Get Exchange Rate</button>
+    <div id="displayCurrency"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        var currencies = ["USD","SGD","MYR","EUR","AUD","JPY","CNH","HKD","CAD","INR","DKK","GBP","RUB","NZD","MXN","IDR","TWD","THB","VND"];
+        var currenciesX = ["EUR","AUD","JPY","CNH","HKD","CAD","INR","DKK","GBP","RUB","NZD","MXN","USD","SGD","MYR","IDR","TWD","THB","VND"];
+        for (var i=0; i < currencies.length; i++) {
+            var currencyOption = $('<option>').text(currencies[i]);
+            $('#fromCurrency').append(currencyOption);
+        }
+        for (var i=0; i < currencies.length; i++) {
+            var currencyOption = $('<option>').text(currenciesX[i]);
+            $('#toCurrency').append(currencyOption);
+        }
+        $('#getCurrency').on('click', function() {
+            var fromCurrency = $('#fromCurrency option:selected').text();
+            var toCurrency = $('#toCurrency option:selected').text();
+            var queryString = '?from='+fromCurrency+'&to='+toCurrency+'&q=500.0'; 
+            console.log(queryString);
+            $.ajax({
+            "async": true,
+            "crossDomain": true,
+            url: "https://rapidapi.p.rapidapi.com/exchange" + queryString,
+            method: 'GET',
+            "headers": {
+            "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
+            "x-rapidapi-key": "48bf12c8d6msh0ac264695b8e047p12405fjsn64e8ea946e35"
+            }
+            }).then(function(response){
+                console.log(response);
+                var amount = $('<h4>');
+                var rounded = parseFloat(response);
+                rounded = rounded.toFixed(2);
+                amount.text(response);
+                var desc = $('<p>');
+                desc.text('For every 1 '+fromCurrency+', you get ~ '+rounded+' '+toCurrency+' in return.');
+                $('#displayCurrency').append(amount);
+                $('#displayCurrency').append(desc);
+            })
+        })
+    </script>
+​
+</body>
+</html>
