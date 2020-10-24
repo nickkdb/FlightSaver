@@ -1,11 +1,30 @@
+body {
+    font-family:'Playfair Display SC', serif;
+}
+
 header {
     background-image: url("images/ocean.jpg");
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 300px 0px 300px 0px;
 }
-h3 {
+h2, h3 {
     color: #fff;
-    font-family: 'Krona One', sans-serif;
+    font-family:'Playfair Display SC', serif;
+}
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+    background-color: #345291;
+    font-family:'Playfair Display SC', serif;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+    background: #345291b8;
+    padding: 20px;
 }
 .saved {
     float: right;
@@ -13,4 +32,18 @@ h3 {
 .left {
     float: left;
     max-width: 500px;
+    margin: 20px;
+}
+.card .card-image img {
+    object-fit: cover;
+    vertical-align: middle; 
+    margin: auto;
+    max-height: 200px;
+    max-width: 100%;
+}
+#money img{
+    vertical-align: top; 
+}
+.weather {
+    color: #000;
 }
