@@ -124,7 +124,7 @@ function showFlights(p) {
         }).appendTo("#flight-info");
         $("<button>", {
             text: "Save this flight",
-            class: "savebtn",
+            class: "waves-effect waves-light btn-large",
             value: i
         }).appendTo("#Quote" + (i + 1)).css("float", "right");
         $("<p>", {
