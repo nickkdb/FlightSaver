@@ -78,6 +78,10 @@ select {
     max-width: 700px;
     margin: auto;
 }
+.checking1 {
+    float: left;
+    margin-left: 10rem;
+}
 @media (max-width: 414px){
 h2 {
     font-size: 32px;
