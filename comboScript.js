@@ -3,6 +3,7 @@ var currentSearch = [];
 var city1;
 var city2;
 var startDate;
+var apiKey;
 
 $(document).ready(function(){
 
@@ -54,10 +55,13 @@ $("#goingTo").on("change", function(e){
 $("#find").on("click", function(e) {
     e.preventDefault();
     $("#flight-info").empty();
+    $(currentSearch).empty();
     startDate = $("#from").val();
     var filler1 = $("#getAirportFrom option:selected").val();
     var filler2 = $("#getAirportTo option:selected").val();
     console.log(filler1);
+    apiKey = "3ccb6a1b00ceec9877b2479048318e8c";
+    fiveDayWeather();
 
     const settings = {
         "async": true,
@@ -72,7 +76,7 @@ $("#find").on("click", function(e) {
     $.ajax(settings).done(function (response2) {
         console.log(response2);
         getFlights(response2);
-        showFlights(currentSearch);
+        //showFlights(currentSearch);
     });
 
     displayMap();
@@ -100,7 +104,10 @@ function chooseArrival(input) {
     
 }
 
-function getFlights(input) {
+function getFlights(input) {  
+    if (input.Quotes.length > 0) {
+
+    
     for (var i= 0; i < input.Quotes.length; i++) {
         var h = input.Quotes[i].OutboundLeg.CarrierIds[0];
         var x = {
@@ -121,6 +128,13 @@ function getFlights(input) {
         }
         currentSearch.push(x);
         console.log(currentSearch);
+    }
+    showFlights(currentSearch);  
+    } else {
+        $("<p>", {
+            text: "No Quotes available for selected route and date combination.",
+            id: "errormsg"
+        }).appendTo("#flight-info");
     }
 }
 
@@ -182,6 +196,59 @@ $("#flight-info").on("click", "button", function(e) {
      
    
 });
+
+function fiveDayWeather() {
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city2 + "&appid=" + apiKey;
+    $("#weather").empty(); // update div id.
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        var result = response.list;
+        console.log(result);
+        for (var i = 0; i < result.length; i++) {
+            if (result[i].dt_txt.indexOf('12:00:00') !== -1) {
+                //weather variables
+                var mainTempF = Math.floor((result[i].main.temp - 273.15) * 1.8 + 32) + " °F";
+                var weatherMain = (result[i].weather[0].main);
+                var windSpeed = Math.floor((result[i].wind.speed) * 2.237) + " MPH";
+                var weatherIcon = result[i].weather[0].icon;
+                var humidity = (result[i].main.humidity) + "%";
+                var timeStamp = result[i].dt;
+                //timeConverter(timeStamp);
+                var timeConverterVal = timeConverter();
+               //card variables
+               //-------------------------------------------------------------------------------//
+               //----------------------------NEED TO ADD CLASSES--------------------------------//
+               //-------------------------------------------------------------------------------//
+                var card = $("<div>").addClass("checking1");
+                var cardBody = $("<div>").addClass("");
+                //weather card variables
+                var dayCard = $("<h4>").addClass("").text(timeConverterVal);
+                var mainTempCard = $("<h4>").addClass("").text("Temp: " + mainTempF);
+                var weatherMainCard = $("<p>").addClass("").text(weatherMain);
+                var windSpeedCard = $("<p>").addClass("").text("Wind: " + windSpeed);
+                var humidityCard = $("<p>").addClass("").text("Humidity: " + humidity);
+                var weatherIconCard = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png").addClass("");
+                //append everything together
+                cardBody.append(dayCard, mainTempCard, weatherIconCard, weatherMainCard, windSpeedCard, humidityCard);
+                card.append(cardBody);
+                $("#weather").append(card); //update with weather div id
+                //this function converts unix timestamp into actual date
+                function timeConverter() {
+                    var a = new Date(timeStamp * 1000);
+                    var monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    var year = a.getFullYear();
+                    var month = monthList[a.getMonth()];
+                    var date = a.getDate();
+                    var time = date + ' ' + month + ' ' + year;
+                    return time;
+                }
+            }
+        }
+    })
+}
 
 displayCurrencies();
 
