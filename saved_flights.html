@@ -32,9 +32,18 @@
             $("#savedflights").text("");
         } else {
             for (var i= 0; i < flights.length; i ++) {
-                $("<p>").text(flights[i].price).appendTo("#savedflights");
+                $("<h4>").text(flights[i].date).appendTo("#savedflights");
+                $("<h5>").text(flights[i].origin + ' to ' + flights[i].destination).appendTo("#savedflights");
+                $("<p>").text('$'+flights[i].price).appendTo("#savedflights");
                 $("<p>").text(flights[i].carrier).appendTo("#savedflights");
-                $("<p>").text(flights[i].direct).appendTo("#savedflights");
+
+                if (flights[i].direct === true) {
+                    $("<p>").text('Direct Flight').appendTo("#savedflights");
+                }
+                else {
+                    $("<p>").text('Has Connecting Flights').appendTo("#savedflights");
+                }
+                
                 $("<br>").appendTo("#savedflights");
             }
         }
