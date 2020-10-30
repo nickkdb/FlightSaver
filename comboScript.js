@@ -84,6 +84,7 @@ $("#find").on("click", function(e) {
 
 
 function chooseOrigin(input) {
+    $("#getAirportFrom").empty();
     for (var i=0; i < input.Places.length; i++) {
         $("<option>", {
             text: input.Places[i].PlaceName,
@@ -94,6 +95,7 @@ function chooseOrigin(input) {
 }
 
 function chooseArrival(input) {
+    $("#getAirportTo").empty();
     for (var i=0; i < input.Places.length; i++) {
         $("<option>", {
             text: input.Places[i].PlaceName,
