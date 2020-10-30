@@ -5,6 +5,8 @@ var city2;
 var startDate;
 var returnDate;
 var apiKey;
+var modalEl = document.getElementById("modal1");
+var instance = M.Modal.init(modalEl);
 
 $(document).ready(function(){
 
@@ -228,7 +230,7 @@ $("#flight-info").on("click", "button", function(e) {
     } else {  
         for (var i= 0; i < flights.length; i++) {
             if (currentSearch[x].fromId === flights[i].fromId && currentSearch[x].toId === flights[i].toId && currentSearch[x].quoteid === flights[i].quoteid && currentSearch[x].date === flights[i].date) {
-                alert("You've already saved this flight!");
+                instance.open();
                 checker = true;
                 break;
             }                            
