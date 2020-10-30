@@ -150,7 +150,7 @@ function showFlights(p) {
             value: i
         }).appendTo("#Quote" + (i + 1)).css("float", "right");
         $("<p>", {
-            text: "Carrier: " + p[i].carrier,
+            text: "Airline: " + p[i].carrier,
             id: "carrier" + (i + 1)
         }).appendTo("#Quote" + (i + 1));
         if (p[i].direct) {
@@ -183,6 +183,7 @@ $("#flight-info").on("click", "button", function(e) {
         for (var i= 0; i < flights.length; i++) {
             if (currentSearch[x].fromId === flights[i].fromId && currentSearch[x].toId === flights[i].toId && currentSearch[x].quoteid === flights[i].quoteid && currentSearch[x].date === flights[i].date) {
                 alert("You've already saved this flight!");
+                $('.modal').modal();
                 checker = true;
                 break;
             }                            

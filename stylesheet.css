@@ -30,7 +30,7 @@ nav .brand-logo {
  font-size: 55px;
  margin-top: 10px;
 }
-.container {
+.search-bar {
     margin: 0 auto;
     max-width: 1280px;
     width: 90%;
@@ -80,8 +80,19 @@ select {
 }
 .checking1 {
     float: left;
-    margin-left: 10rem;
+    margin: auto;
 }
+#weather.card-content {
+    height: 390px;
+}
+.blue-grey.darken-1 {
+    background-color: #bc4a6b !important;
+}
+#savedflights{
+    width: 50%;
+    margin: auto;
+}
+
 @media (max-width: 414px){
 h2 {
     font-size: 32px;
