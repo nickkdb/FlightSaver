@@ -18,9 +18,13 @@
         </div>
     </nav>
     <header></header>
-    <section id="savedflights"></section>
+    <section id="savedflights">
+        <p id= "clearbtn">Click here to clear your saved flights</p>
+    </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
     <script>   
         var flights = JSON.parse(localStorage.getItem("flights"));
         if (!flights) {
@@ -30,7 +34,7 @@
                 var card = $('<div>').addClass('card blue-grey darken-1');
                 var cardBody = $('<div>').addClass('card-content white-text');
                 var date = $("<p>").text(flights[i].date);
-                var dest =$("<h4>").text(flights[i].origin + ' to ' + flights[i].destination);
+                 var dest =$("<h4>").text(flights[i].origin + " (" + flights[i].fromcode + ")" + ' to ' + flights[i].destination + " (" + flights[i].tocode + ')').addClass("savedheading");
                 var price = $("<h6>").text('Price: $' + flights[i].price);
                 var carrier = $("<h6>").text('Airline: ' + flights[i].carrier);
                 if (flights[i].direct === true) {
@@ -39,11 +43,16 @@
                 else {
                     var bool = $("<h6>").text('Has Connecting Flights');
                 }
-                $('#savedflights').append(card);
+                $('#savedflights').prepend(card);
                 card.append(cardBody);
-                cardBody.append(date, dest, price, carrier, bool);
+                cardBody.append(dest, date, price, carrier, bool);
             }
         }
+
+        $("#clearbtn").on("click", function() {
+            localStorage.clear();
+            location.reload();
+        })
     </script>
 </body>
 </html>

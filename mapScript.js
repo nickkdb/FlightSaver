@@ -2,6 +2,7 @@ var fromLat = 0.00;
 var fromLng = 0.00;
 var toLat = 0.00;
 var toLng = 0.00;
+var map;
 
 (function () {
     var placesAutocomplete = places({
@@ -40,6 +41,10 @@ var toLng = 0.00;
 
 
 function displayMap() {
+    if (map) {
+        map.off();
+        map.remove();
+    }
     var placesAutocomplete = places({
         appId: 'plKZWQZ4OYQ8',
         apiKey: '6b884ab3c793e4319219fc9e58d16f67',
@@ -47,7 +52,7 @@ function displayMap() {
     });
 
     //var latlng = L.latLng(39.952583, -75.165222);
-    var map = L.map('map-example-container', {
+        map = L.map('map-example-container', {
         center: L.latLng(0, 0),
         zoom: 4
     });
