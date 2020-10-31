@@ -255,7 +255,7 @@ function fiveDayWeather() {
         console.log(response);
         var result = response.list;
         console.log(result);
-        for (var i = 0; i < result.length; i++) {
+        for (var i = 0; i < (result.length - 8); i++) {
             if (result[i].dt_txt.indexOf('12:00:00') !== -1) {
                 //weather variables
                 var mainTempF = Math.floor((result[i].main.temp - 273.15) * 1.8 + 32) + " °F";
@@ -270,7 +270,8 @@ function fiveDayWeather() {
                //-------------------------------------------------------------------------------//
                //----------------------------NEED TO ADD CLASSES--------------------------------//
                //-------------------------------------------------------------------------------//
-                var card = $("<div>").addClass("checking1");
+                var col = $("<div>").addClass("col s12 m6 l3");
+                var card = $("<div>").addClass("checking1 z-depth-3");
                 var cardBody = $("<div>").addClass("");
                 //weather card variables
                 var dayCard = $("<h4>").addClass("").text(timeConverterVal);
@@ -282,7 +283,8 @@ function fiveDayWeather() {
                 //append everything together
                 cardBody.append(dayCard, mainTempCard, weatherIconCard, weatherMainCard, windSpeedCard, humidityCard);
                 card.append(cardBody);
-                $("#weather").append(card); //update with weather div id
+                col.append(card);
+                $("#weather").append(col); //update with weather div id
                 //this function converts unix timestamp into actual date
                 function timeConverter() {
                     var a = new Date(timeStamp * 1000);

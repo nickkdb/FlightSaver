@@ -79,8 +79,10 @@ select {
     margin: auto;
 }
 .checking1 {
-    float: left;
-    margin: auto;
+    padding: 1rem 2rem;
+    background-color: cadetblue;
+    color: white;
+    margin-bottom: .5rem;  
 }
 #weather.card-content {
     height: 390px;
@@ -106,6 +108,10 @@ select {
     color: rgb(99, 213, 238);
     cursor: pointer;
 }
+#weather {
+    justify-content: center;
+    align-items: center;
+  }
 @media (max-width: 414px){
 h2 {
     font-size: 32px;
