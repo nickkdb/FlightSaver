@@ -2,13 +2,27 @@ body {
     font-family:'Playfair Display SC', serif;
 }
 
-header {
+#indexHead {
     background-image: url("images/ocean.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 300px 0px 300px 0px;
 }
+
+#savedHead {
+    background-image: url("images/airplane.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 200px 0px 200px 0px;
+}
+
+#savedHead h1 {
+    text-align: center;
+    margin: 8rem;
+}
+
 .container {
     border-radius: 6px;
 }
@@ -136,4 +150,10 @@ nav .brand-logo.center {
 .card .card-image img {
     max-height: 150px;
 }
+#savedHead h1 {
+    text-align: right;
+    font-size: 3.5rem;
+    margin: 2rem;
+}
+
 }
