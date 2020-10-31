@@ -192,7 +192,7 @@ function showFlights(p) {
             value: i
         }).appendTo("#Name" + (i + 1)).css("float", "right");
         $("<p>", {
-            text: "Carrier: " + p[i].carrier,
+            text: "Airline: " + p[i].carrier,
             id: "carrier" + (i + 1)
         }).appendTo("#Name" + (i + 1));
         if (p[i].direct) {
