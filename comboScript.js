@@ -270,6 +270,7 @@ function fiveDayWeather() {
                //-------------------------------------------------------------------------------//
                //----------------------------NEED TO ADD CLASSES--------------------------------//
                //-------------------------------------------------------------------------------//
+               $("#weatherhead").html("This Weeks Weather <br> In " + city2);
                 var col = $("<div>").addClass("col s12 m6 l3");
                 var card = $("<div>").addClass("checking1 z-depth-3");
                 var cardBody = $("<div>").addClass("");
