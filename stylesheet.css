@@ -82,6 +82,20 @@ select {
     float: left;
     margin-left: 10rem;
 }
+.savedheading {
+    font-size: 18px;
+    font-weight: 700;
+}
+#clearbtn {
+    text-align: center;
+    color: #06AED5;
+    font-size: larger;
+}
+#clearbtn:hover {
+    text-decoration: underline;
+    color: rgb(99, 213, 238);
+    cursor: pointer;
+}
 @media (max-width: 414px){
 h2 {
     font-size: 32px;
