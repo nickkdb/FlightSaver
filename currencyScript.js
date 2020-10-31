@@ -8,7 +8,8 @@ function displayCurrencies() {
         method: 'GET',
         "headers": {
             "x-rapidapi-host": "currency-converter13.p.rapidapi.com",
-            "x-rapidapi-key": "48bf12c8d6msh0ac264695b8e047p12405fjsn64e8ea946e35"
+            "x-rapidapi-key": "48bf12c8d6msh0ac264695b8e047p12405fjsn64e8ea946e35",
+            "Access-Control-Allow-Origin": "https://nickkdb.github.io/Group5-Repository"
         }
     }).then(function (response) {
         console.log(response);
